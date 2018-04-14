@@ -15,7 +15,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: lightseagreen;
+    background: lightgrey;
 }
 
 p {
@@ -40,7 +40,7 @@ box {
     align-items: center;
     justify-content: center;
     left: 28%;
-    top: 40%;
+    top: 50%;
     font-size: 37px;
     color: black;
     padding: 30px;
@@ -75,6 +75,17 @@ img{
     <meta content="">
   </head>
   <body>
+	  <?php  
+  try {
+        $sql = 'SELECT * FROM secret_word';
+        $q = $conn->query($sql);
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $q->fetch();
+    } catch (PDOException $e) {
+        throw $e;
+    }
+    $secret_word = $data['secret_word'];
+    ?>
   <header>
 			<div>
 				<a href="https://github.com/benzowe"><i class="fa fa-github"></i></i></a>
